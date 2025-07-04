@@ -3,10 +3,13 @@ import cors from "cors";
 import mongoose from "mongoose";
 import config from "./config";
 import { Server } from "http";
+import userRoute from "./modules/user/user.route";
 const server = Server;
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use(userRoute);
 
 app.get("/", (req: Request, res: Response) => {
   res.send({ success: true, message: "Welcome to mango server" });
